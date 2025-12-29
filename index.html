@@ -2,148 +2,115 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz Minecraft 💚</title>
 
 <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 
 <style>
-:root {
-  --box-width-desktop: 520px;
-  --box-width-mobile: 95vw;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Minecraft', monospace;
-  font-size: 22px;
-  background-image: url("https://www.xtrafondos.com/wallpapers/resized/naturaleza-de-mapa-clasico-de-minecraft-13260.jpg?s=large");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* FLASH DE DAÑO */
-body.damage {
-  animation: damageFlash 0.35s;
-}
-
-@keyframes damageFlash {
-  0% { background-color: rgba(255,0,0,0.35); }
-  100% { background-color: transparent; }
-}
-
-/* SACUDIDA */
-.shake {
-  animation: shake 0.3s;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-/* OCULTO */
-.hidden {
-  display: none;
-}
-
-/* CAJA PRINCIPAL */
-.box {
-  width: var(--box-width-desktop);
-  max-width: 95vw;
-  padding: 26px;
-  background: rgba(30, 30, 30, 0.93);
-  border: 4px solid #f5b700;
-  box-shadow: 0 0 30px rgba(0,0,0,0.7);
-  text-align: center;
-}
-
-/* TEXTOS */
-h1 {
-  font-size: 26px;
-  margin-bottom: 14px;
-}
-
-h2 {
-  font-size: 22px;
-}
-
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 10px 0;
-}
-
-/* BOTONES */
-button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  font-family: 'Minecraft', monospace;
-  font-size: 18px;
-  background: #3a3a3a;
-  color: white;
-  border: 3px solid #000;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #5a5a5a;
-}
-
-/* CORAZONES */
-.hearts {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-/* RECOMPENSA */
-.reward {
-  border: 3px solid #f5b700;
-  padding: 16px;
-  margin-top: 14px;
-  background: rgba(0,0,0,0.4);
-}
-
-/* 📱 MOBILE PERFECTO */
-@media (max-width: 768px) {
   body {
-    font-size: 18px;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Minecraft', monospace;
+    font-size: 22px; /* 🔥 CLAVE */
+    background-image: url("fondo mineee.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.damage {
+    animation: damageFlash 0.35s;
+  }
+
+  @keyframes damageFlash {
+    0% { background-color: rgba(255,0,0,0.45); }
+    100% { background-color: transparent; }
   }
 
   .box {
-    width: var(--box-width-mobile);
-    padding: 22px;
+    background: rgba(50, 50, 50, 0.97);
+    border: 5px solid #1a1a1a;
+    padding: 42px;
+    width: 520px;              /* 🔥 MÁS GRANDE */
+    text-align: center;
+    box-shadow: 0 0 0 6px #7a7a7a;
+    color: white;
+  }
+
+  .box.shake {
+    animation: shake 0.3s;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+  }
+
+  .hearts {
+    font-size: 30px; /* 🔥 */
+    margin-bottom: 20px;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 32px;
+    margin-bottom: 25px;
   }
 
   p {
-    font-size: 16px;
+    font-size: 22px;
+    margin-bottom: 18px;
   }
 
   button {
-    font-size: 16px;
-    padding: 11px;
+    width: 100%;
+    margin: 14px 0;
+    padding: 18px;
+    font-size: 20px;
+    background: #6aaa40;
+    border: 4px solid #2e4e1c;
+    color: white;
+    font-family: 'Minecraft', monospace;
+    cursor: pointer;
   }
-}
+
+  button:hover {
+    background: #7ed957;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .reward {
+    background: #1f1f1f;
+    padding: 22px;
+    margin-top: 25px;
+    border: 4px solid #ffaa00;
+    font-size: 20px;
+  }
+
+  /* 📱 CELULAR */
+  @media (max-width: 600px) {
+    body {
+      font-size: 18px;
+    }
+
+    .box {
+      width: 92%;
+      padding: 28px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+  }
 </style>
+
 </head>
 
 <body>
@@ -158,7 +125,7 @@ button:hover {
     <h2>🎁 Recompensa</h2>
     <p>📧 Correo:<br><b>paramigordita2025@mail.com</b></p>
     <p>🔑 Contraseña:<br><b>queculitogordi.</b></p>
-    <p>Y después andá a Xbox e iniciate con este correo</p>
+    <p>Y despues anda a Xbox y iniciate con este correo</p>
     <p>💖 Feliz 8vo mes 💖</p>
   </div>
 </div>
@@ -176,12 +143,12 @@ const questions = [
   },
   {
     q: "¿Qué es lo que más me gusta de vos?",
-    options: ["Tu culito", "Tus ojosh", "Todo", "Tus tetash"],
+    options: ["Tu culito", "Tu ojosh", "Todo", "tus tetash"],
     correct: 2
   },
   {
     q: "¿Cuánto te amo?",
-    options: ["Mucho", "Muchísimo", "Infinito", "Nivel God"],
+    options: ["Mucho", "Muchísimo", "Infinito", "Nivel Got"],
     correct: 3
   }
 ];
@@ -240,7 +207,7 @@ function checkAnswer(index) {
     }, 300);
 
     if (lives === 0) {
-      alert("💀 Te quedaste sin vidas… empezamos de nuevo");
+      alert("💀 Te quedaste sin vidas… empezamos de nuevo ");
       current = 0;
       lives = 3;
       rewardDiv.classList.add("hidden");
@@ -256,3 +223,4 @@ showQuestion();
 
 </body>
 </html>
+
