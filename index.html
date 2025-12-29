@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Minecraft 💚</title>
+
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Minecraft', monospace;
+    font-size: 22px; /* 🔥 CLAVE */
+    background-image: url("https://www.xtrafondos.com/wallpapers/resized/naturaleza-de-mapa-clasico-de-minecraft-13260.jpg?s=large");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.damage {
+    animation: damageFlash 0.35s;
+  }
+
+  @keyframes damageFlash {
+    0% { background-color: rgba(255,0,0,0.45); }
+    100% { background-color: transparent; }
+  }
+
+  .box {
+    background: rgba(50, 50, 50, 0.97);
+    border: 5px solid #1a1a1a;
+    padding: 42px;
+    width: 520px;              /* 🔥 MÁS GRANDE */
+    text-align: center;
+    box-shadow: 0 0 0 6px #7a7a7a;
+    color: white;
+  }
+
+  .box.shake {
+    animation: shake 0.3s;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+  }
+
+  .hearts {
+    font-size: 30px; /* 🔥 */
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  button {
+    width: 100%;
+    margin: 14px 0;
+    padding: 18px;
+    font-size: 20px;
+    background: #6aaa40;
+    border: 4px solid #2e4e1c;
+    color: white;
+    font-family: 'Minecraft', monospace;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #7ed957;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .reward {
+    background: #1f1f1f;
+    padding: 22px;
+    margin-top: 25px;
+    border: 4px solid #ffaa00;
+    font-size: 20px;
+  }
+
+  /* 📱 CELULAR */
+  @media (max-width: 600px) {
+    body {
+      font-size: 18px;
+    }
+
+    .box {
+      width: 92%;
+      padding: 28px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="box" id="box">
+  <div class="hearts" id="hearts">❤️ ❤️ ❤️</div>
+
+  <h1>💚 Quiz del Amor</h1>
+  <div id="quiz"></div>
+
+  <div id="reward" class="reward hidden">
+    <h2>🎁 Recompensa</h2>
+    <p>📧 Correo:<br><b>paramigordita2025@mail.com</b></p>
+    <p>🔑 Contraseña:<br><b>queculitogordi.</b></p>
+    <p>Y despues anda a Xbox y iniciate con este correo</p>
+    <p>💖 Feliz 8vo mes 💖</p>
+  </div>
+</div>
+
+<audio id="damageSound" src="https://www.myinstants.com/media/sounds/minecraft_oof.mp3"></audio>
+<audio id="levelUpSound" src="https://www.myinstants.com/media/sounds/minecraft-level-up.mp3"></audio>
+<audio id="clickSound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
+
+<script>
+const questions = [
+  {
+    q: "¿Dónde fue nuestra primera cita?",
+    options: ["burger taster", "via consenza", "Casa", "Otro"],
+    correct: 0
+  },
+  {
+    q: "¿Qué es lo que más me gusta de vos?",
+    options: ["Tu culito", "Tu ojosh", "Todo", "tus tetash"],
+    correct: 2
+  },
+  {
+    q: "¿Cuánto te amo?",
+    options: ["Mucho", "Muchísimo", "Infinito", "Nivel Got"],
+    correct: 3
+  }
+];
+
+let current = 0;
+let lives = 3;
+
+const quizDiv = document.getElementById("quiz");
+const rewardDiv = document.getElementById("reward");
+const heartsDiv = document.getElementById("hearts");
+const box = document.getElementById("box");
+
+const damageSound = document.getElementById("damageSound");
+const levelUpSound = document.getElementById("levelUpSound");
+const clickSound = document.getElementById("clickSound");
+
+function updateHearts() {
+  heartsDiv.textContent = "❤️ ".repeat(lives);
+}
+
+function showQuestion() {
+  const q = questions[current];
+  quizDiv.innerHTML = `<p>${q.q}</p>`;
+
+  q.options.forEach((opt, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(index);
+    quizDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(index) {
+  clickSound.play();
+
+  if (index === questions[current].correct) {
+    current++;
+    if (current < questions.length) {
+      showQuestion();
+    } else {
+      quizDiv.innerHTML = "<h2>🎉 ¡Nivel completado!</h2>";
+      levelUpSound.play();
+      rewardDiv.classList.remove("hidden");
+    }
+  } else {
+    lives--;
+    damageSound.play();
+    updateHearts();
+
+    document.body.classList.add("damage");
+    box.classList.add("shake");
+
+    setTimeout(() => {
+      document.body.classList.remove("damage");
+      box.classList.remove("shake");
+    }, 300);
+
+    if (lives === 0) {
+      alert("💀 Te quedaste sin vidas… empezamos de nuevo ");
+      current = 0;
+      lives = 3;
+      rewardDiv.classList.add("hidden");
+      updateHearts();
+      showQuestion();
+    }
+  }
+}
+
+updateHearts();
+showQuestion();
+</script>
+
+</body>
+</html>
