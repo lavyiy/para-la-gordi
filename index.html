@@ -122,97 +122,6 @@ button:hover {
 }
 </style>
 
-  body.damage {
-    animation: damageFlash 0.35s;
-  }
-
-  @keyframes damageFlash {
-    0% { background-color: rgba(255,0,0,0.45); }
-    100% { background-color: transparent; }
-  }
-
-  .box {
-    background: rgba(50, 50, 50, 0.97);
-    border: 5px solid #1a1a1a;
-    padding: 42px;
-    width: 520px;              /* 🔥 MÁS GRANDE */
-    text-align: center;
-    box-shadow: 0 0 0 6px #7a7a7a;
-    color: white;
-  }
-
-  .box.shake {
-    animation: shake 0.3s;
-  }
-
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    50% { transform: translateX(8px); }
-    75% { transform: translateX(-8px); }
-    100% { transform: translateX(0); }
-  }
-
-  .hearts {
-    font-size: 30px; /* 🔥 */
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: 32px;
-    margin-bottom: 25px;
-  }
-
-  p {
-    font-size: 22px;
-    margin-bottom: 18px;
-  }
-
-  button {
-    width: 100%;
-    margin: 14px 0;
-    padding: 18px;
-    font-size: 20px;
-    background: #6aaa40;
-    border: 4px solid #2e4e1c;
-    color: white;
-    font-family: 'Minecraft', monospace;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #7ed957;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .reward {
-    background: #1f1f1f;
-    padding: 22px;
-    margin-top: 25px;
-    border: 4px solid #ffaa00;
-    font-size: 20px;
-  }
-
-  /* 📱 CELULAR */
-  @media (max-width: 600px) {
-    body {
-      font-size: 18px;
-    }
-
-    .box {
-      width: 92%;
-      padding: 28px;
-    }
-
-    h1 {
-      font-size: 26px;
-    }
-  }
-</style>
-
 </head>
 
 <body>
@@ -325,5 +234,6 @@ showQuestion();
 
 </body>
 </html>
+
 
 
